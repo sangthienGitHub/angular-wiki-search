@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WikipediaService } from './wikipedia.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  //shortcut constructor implementation
+  constructor(private wikipedia: WikipediaService) {}
+
   onTerm(term: string) {
-    console.log('I am the app this is the term', term);
+    const results = this.wikipedia.search(term);
+    console.log(results);
   }
 }
